@@ -3,13 +3,13 @@ using UnityEngine.SceneManagement;
 public class StartGame : MonoBehaviour
 {
    public static bool IsGameStarted = false;
-   public GameObject Logo, PlayImage, CountMoves, LoseText;
+   public GameObject Logo, PlayImage, CountMoves, LoseText, WinText, ShopImage;
 
-    private bool IsLoseGame = false;
+    private bool IsLoseGame = false, IsWinGame = false;
    
    public void PlayGame()
    {
-    if(!IsLoseGame)
+     if(!IsLoseGame && !IsWinGame)
    {
       IsGameStarted = true;
       Logo.SetActive(false);
@@ -18,6 +18,16 @@ public class StartGame : MonoBehaviour
    }else
       SceneManager.LoadScene( SceneManager.GetActiveScene().name);
    
+   }
+
+   public void WinGame()
+   {
+      IsWinGame = true;
+      Logo.SetActive(true);
+      PlayImage.SetActive(true);
+      WinText.SetActive(true);
+      ShopImage.SetActive(true);
+      CountMoves.SetActive(false);
    }
 
 public void LoseGame()

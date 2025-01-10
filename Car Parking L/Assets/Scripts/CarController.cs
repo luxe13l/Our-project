@@ -8,8 +8,7 @@ using UnityEngine.UI;
 
 public class CarController : MonoBehaviour
 {
-
-  
+ 
   private Rigidbody _rb;
   public float speed = 5f, finalSpeed = 15f, rotateSpeed = 50f;
   private bool isClicked;
@@ -29,9 +28,11 @@ public class CarController : MonoBehaviour
   private Direction CarDirectionX = Direction.None;
   private Direction CarDirectionY = Direction.None;
 
-  public Text CountMoves;
-  public GameObject StartGameBtn;
+ public Text CountMoves, CountMoney;
+ public GameObject StartGameBtn;
+
   private static int CountCars = 0;
+
 
 
   private float curPointX, curPointY;
@@ -65,19 +66,17 @@ public class CarController : MonoBehaviour
     else
         CarDirectionY = Direction.Bottom;
     
-        isClicked = true;
+    isClicked = true;
 
-      CountMoves.text = Convert.ToString(Convert.ToInt32(CountMoves.text) - 1);
-        
+    CountMoves.text = Convert.ToString(Convert.ToInt32(CountMoves.text) - 1);
 
 
   }
   void Update()
   {
-      if(CountMoves.text == "0" && CountCars > 0 && !isClicked)
+    if(CountMoves.text == "0" && CountCars > 0 && !isClicked)
       StartGameBtn.GetComponent<StartGame>().LoseGame();
-    
-    
+
     if(FinalPosition.x !=0)
     {
       transform.position = Vector3.MoveTowards(transform.position, FinalPosition, finalSpeed * Time.deltaTime);
@@ -88,14 +87,16 @@ public class CarController : MonoBehaviour
     }
 
      if(transform.position == FinalPosition)
-    {
-      
-      
-      CountCars--;
-       Destroy(gameObject);
-    }
-       
-       
+     {
+        PlayerPrefs.SetInt("CarCoins", PlayerPrefs.GetInt("CarCoins") + 1); 
+        CountMoney.text = Convert.ToString(Convert.ToInt32(CountMoney.text) + 1);
+        CountCars--;
+        
+        if(CountCars == 0) StartGameBtn.GetComponent<StartGame>().WinGame();
+
+        Destroy(gameObject);
+     }
+        
   }
 
 
