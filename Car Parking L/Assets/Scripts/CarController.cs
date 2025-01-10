@@ -31,6 +31,7 @@ public class CarController : MonoBehaviour
 
   public Text CountMoves;
   public GameObject StartGameBtn;
+  private static int CountCars = 0;
 
 
   private float curPointX, curPointY;
@@ -38,6 +39,7 @@ public class CarController : MonoBehaviour
 
   void Awake()
   {
+      CountCars++;
     _rb = GetComponent<Rigidbody>();
   }
 
@@ -67,12 +69,15 @@ public class CarController : MonoBehaviour
 
       CountMoves.text = Convert.ToString(Convert.ToInt32(CountMoves.text) - 1);
         
-        if(CountMoves.text == "0")
-        StartGameBtn.GetComponent<StartGame>().LoseGame();
+
 
   }
   void Update()
   {
+      if(CountMoves.text == "0" && CountCars > 0 && !isClicked)
+      StartGameBtn.GetComponent<StartGame>().LoseGame();
+    
+    
     if(FinalPosition.x !=0)
     {
       transform.position = Vector3.MoveTowards(transform.position, FinalPosition, finalSpeed * Time.deltaTime);
@@ -83,7 +88,14 @@ public class CarController : MonoBehaviour
     }
 
      if(transform.position == FinalPosition)
-        Destroy(gameObject);
+    {
+      
+      
+      CountCars--;
+       Destroy(gameObject);
+    }
+       
+       
   }
 
 
