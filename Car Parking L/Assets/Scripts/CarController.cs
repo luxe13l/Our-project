@@ -4,9 +4,12 @@ using System.Transactions;
 using System.Collections.Specialized;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CarController : MonoBehaviour
 {
+
+  
   private Rigidbody _rb;
   public float speed = 5f, finalSpeed = 15f, rotateSpeed = 50f;
   private bool isClicked;
@@ -26,7 +29,8 @@ public class CarController : MonoBehaviour
   private Direction CarDirectionX = Direction.None;
   private Direction CarDirectionY = Direction.None;
 
-
+  public Text CountMoves;
+  public GameObject StartGameBtn;
 
 
   private float curPointX, curPointY;
@@ -60,6 +64,11 @@ public class CarController : MonoBehaviour
         CarDirectionY = Direction.Bottom;
     
         isClicked = true;
+
+      CountMoves.text = Convert.ToString(Convert.ToInt32(CountMoves.text) - 1);
+        
+        if(CountMoves.text == "0")
+        StartGameBtn.GetComponent<StartGame>().LoseGame();
 
   }
   void Update()

@@ -947,6 +947,8 @@ MonoBehaviour:
   finalSpeed: 15
   rotateSpeed: 280
   CarAxis: 0
+  CountMoves: {fileID: 1866179568}
+  StartGameBtn: {fileID: 1587797390}
 --- !u!65 &122316921
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8342,6 +8344,8 @@ MonoBehaviour:
   finalSpeed: 15
   rotateSpeed: 280
   CarAxis: 0
+  CountMoves: {fileID: 1866179568}
+  StartGameBtn: {fileID: 1587797390}
 --- !u!65 &883967671
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12809,6 +12813,8 @@ MonoBehaviour:
   finalSpeed: 15
   rotateSpeed: 280
   CarAxis: 1
+  CountMoves: {fileID: 1866179568}
+  StartGameBtn: {fileID: 1587797390}
 --- !u!65 &1394191569
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13058,6 +13064,8 @@ MonoBehaviour:
   finalSpeed: 15
   rotateSpeed: 280
   CarAxis: 1
+  CountMoves: {fileID: 1866179568}
+  StartGameBtn: {fileID: 1587797390}
 --- !u!65 &1419310983
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14929,6 +14937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Logo: {fileID: 1488362040}
   PlayImage: {fileID: 1587797390}
+  CountMoves: {fileID: 1866179565}
 --- !u!1001 &1588820644
 PrefabInstance:
   m_ObjectHideFlags: 0
