@@ -88,8 +88,7 @@ public class CarController : MonoBehaviour
 
      if(transform.position == FinalPosition)
      {
-        PlayerPrefs.SetInt("CarCoins", PlayerPrefs.GetInt("CarCoins") + 1); 
-        CountMoney.text = Convert.ToString(Convert.ToInt32(CountMoney.text) + 1);
+        
         CountCars--;
         
         if(CountCars == 0) StartGameBtn.GetComponent<StartGame>().WinGame();
